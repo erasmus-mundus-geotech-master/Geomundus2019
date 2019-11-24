@@ -43,6 +43,7 @@ var MadridTrain;
 
 var university;
 var Dinner;
+var MeetUp;
 
 var infoUji
 var infoValenciaAirport
@@ -50,12 +51,13 @@ var infoUji
 var infoDinnerLoc
 
 var contentUji = '<div id = "content" style = "color:#4a87d3" > ' +
-    '<h2 style="color:#4a87d3">Jaume I University </h2>' +
+    '<h2 style="color:#4a87d3">Espaitec 2, Jaume I University </h2>' +
     '<p align="left" style="color:#4a87d3">' +
     '<b style="color:#4a87d3">Address: </b> Avenida de Vicent Sos Baynat, s/n, 12071 Castellón <br>' +
     '<b style="color:#4a87d3">Teléfono: </b> +34 902320320<br>' +
-    '<b style="color:#4a87d3">Web Page: </b><a href="https://www.uji.es">' +
+    '<b style="color:#4a87d3">Web Page: </b><a href="https://www.geotec.uji.es">' +
     'https://www.uji.es</a></p>' +
+    '<a href="https://www.google.com/maps/place/Fundaci%C3%B3n+f2e/@39.9937823,-0.073097,18.56z/data=!4m12!1m6!3m5!1s0xd5ffe0fca9b5147:0x1368bf53b3a7fb3f!2sJaume+I+University!8m2!3d39.9945711!4d-0.0689003!3m4!1s0x0:0xd50e11a2dfa65003!8m2!3d39.9937759!4d-0.0737178?hl=en-US"><b style="color:#4a87d3">View on Map</a></p>' +
     '</div>';
 
 align = "left"
@@ -81,6 +83,7 @@ function setMapVisibility(itemClicked) {
 
     //clearObjectFromMap(university);
     clearObjectFromMap(Dinner);
+    clearObjectFromMap(MeetUp);
 
     clearObjectFromMap(CastellonTrain);
     clearObjectFromMap(ValenciaTrain);
@@ -196,16 +199,11 @@ function setMapVisibility(itemClicked) {
                 var DinnerLoc = new google.maps.LatLng(39.983396, -0.035208);
                 var imageDinnerLoc = {
                     url: 'images/dinnerloc.png',
-                    // size: new google.maps.Size(458, 640),
                     scaledSize: new google.maps.Size(32, 32),
-                    // The origin for this image is (0, 0).
-                    // origin: DinnerLoc,
-                    // The anchor for this image is the base of the flagpole at (0, 32).
-                    // anchor: new google.maps.Point(229, 640)
                 };
 
                 var contentDinnerLoc = '<div id="content" style="color:#4a87d3">' +
-                    '<h2 style="color:#4a87d3">Cervecería Gambrinus</h2><br>' +
+                    '<h2 style="color:#4a87d3">Dinner Venue <br>Cervecería Gambrinus</h2><br>' +
                     '<img src="https://www.gambrinuscastellon.com/wp-content/uploads/2019/11/borrull.jpg" width = "150" heigght = "150"></img>' +
                     // '<h3 style="color:#4a87d3">City Center</h3><br>'+
                     '<p align="left" style="color:#4a87d3">' +
@@ -213,8 +211,8 @@ function setMapVisibility(itemClicked) {
                     // '<b style="color:#4a87d3">Economy Single, breakfast included</b><br>'+
                     // '<b style="color:#4a87d3">72,- €</b> <br/>'+'<b style="color:#4a87d3">Comfort Single, breakfast included</b><br>'+
                     // '<b style="color:#4a87d3">	77,- € </b><br/>'+
-                    '<b style="color:#4a87d3">Web Page: </b><a href="https://www.gambrinuscastellon.com/" target="_blank">' +
-                    'https://www.gambrinuscastellon.com/</a></p>' +
+                    '<b style="color:#4a87d3">Web Page: </b><a href="https://www.gambrinuscastellon.com/" target="_blank">https://www.gambrinuscastellon.com/</a></p>' +
+                    '<a href = "https://www.google.com/maps/place/Cervecer%C3%ADa+Gambrinus+Borrull+Castell%C3%B3n/@39.983149,-0.0374177,17z/data=!3m1!4b1!4m5!3m4!1s0xd5fffd508a714bf:0x6602be996ce0807d!8m2!3d39.983149!4d-0.035229" target = "_blank">View on map</a>' +
                     '</div>';
                 infoDinnerLoc = new google.maps.InfoWindow({
                     content: contentDinnerLoc
@@ -227,11 +225,45 @@ function setMapVisibility(itemClicked) {
                     // animation: google.maps.Animation.BOUNCE
                 });
 
-                DinnerLoc.addListener('click', function() {
+                Dinner.addListener('click', function() {
                     clearInforWindows()
                     infoDinnerLoc.open(map, Dinner);
                 });
                 map.panTo(DinnerLoc);
+                map.setZoom(13);
+            }
+            break;
+        case 'meetup':
+            {
+                var MeetUpLoc = new google.maps.LatLng(39.988017, -0.047769);
+                var imageMeetUp = {
+                    url: 'images/meetuploc.png',
+                    scaledSize: new google.maps.Size(32, 32),
+                };
+
+                var contentMeetUp = '<div id="content" style="color:#4a87d3">' +
+                    '<h2 style="color:#4a87d3">Pre Conference Meetup at<br>El Corte Inglés</h2><br>' +
+                    '<img src="https://www.gambrinuscastellon.com/wp-content/uploads/2019/11/borrull.jpg" width = "150" heigght = "150"></img>' +
+                    '<p align="left" style="color:#4a87d3">' +
+                    '<b style="color:#4a87d3">Address: Passeig de Morella, 1, 12006 <br>Castellón de la Plana, Castellón, Spain<br>' +
+                    '<a href = "https://www.google.com/maps/place/Supermercado+El+Corte+Ingl%C3%A9s/@39.9879839,-0.0478293,17.93z/data=!4m8!1m2!2m1!1sEl+Corte+Ingl%C3%A9s,+Passeig+de+Morella,+1,+12006!3m4!1s0x0:0x60172b9a7bb66d18!8m2!3d39.9880215!4d-0.0473973" target = "_blank">View on map</a>' +
+                    '</div>';
+                infoMeetUp = new google.maps.InfoWindow({
+                    content: contentMeetUp
+                });
+
+                MeetUp = new google.maps.Marker({
+                    position: MeetUpLoc,
+                    map: map,
+                    icon: imageMeetUp,
+                    // animation: google.maps.Animation.BOUNCE
+                });
+
+                MeetUp.addListener('click', function() {
+                    clearInforWindows()
+                    infoMeetUp.open(map, MeetUp);
+                });
+                map.panTo(MeetUpLoc);
                 map.setZoom(13);
             }
             break;
