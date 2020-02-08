@@ -365,11 +365,11 @@
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <img src="http://geomundus.org/2019/images/gallery/thumbs/53_tn.jpg" data-large="images/gallery/53.jpg" alt="image53"></a>
+                                                    <img src="images/gallery/thumbs/53_tn.jpg" data-large="images/gallery/53.jpg" alt="image53"></a>
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <img src="http://geomundus.org/2019/images/gallery/thumbs/54_tn.jpg" data-large="images/gallery/54.jpg" alt="image54"></a>
+                                                    <img src="images/gallery/thumbs/54_tn.jpg" data-large="images/gallery/54.jpg" alt="image54"></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -385,6 +385,14 @@
                 </div>
             </div>
         </div>
+        <script>
+            // debugger;
+            $d = $("[data-large]");
+            $d.addClass('thumbs');
+            $d.css({
+                height: '4em'
+            });
+        </script>
     </section>
     <!--2019 SPEAKERS -->
     <section id="two" class="main style2" w3-include-html='speakers.html'></section>
